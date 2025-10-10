@@ -135,7 +135,7 @@ pub struct RandomStrategy;
 
 impl Strategy for RandomStrategy {
     fn select_guess<'a>(&self, guess_pool: &'a [Word], candidates: &[Word]) -> Option<&'a Word> {
-        use rand::seq::SliceRandom;
+        use rand::prelude::IndexedRandom;
 
         // Prefer candidates from the guess pool
         let valid_candidates: Vec<&Word> = candidates
@@ -143,7 +143,7 @@ impl Strategy for RandomStrategy {
             .filter(|c| guess_pool.iter().any(|g| g.text() == c.text()))
             .collect();
 
-        if let Some(candidate) = valid_candidates.choose(&mut rand::thread_rng()) {
+        if let Some(candidate) = valid_candidates.choose(&mut rand::rng()) {
             guess_pool.iter().find(|w| w.text() == candidate.text())
         } else {
             // Fallback: pick first candidate if none are in guess pool
