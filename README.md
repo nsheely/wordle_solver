@@ -13,8 +13,10 @@ Solves Wordle puzzles by combining multiple strategies:
 - **Minimax** - minimizes worst-case remaining candidates
 - **Hybrid** - balances both approaches adaptively
 
-Achieves 3.428-3.436 average guesses (optimal is 3.421*).
-*[Bertsimas & Paskov](https://auction-upload-files.s3.amazonaws.com/Wordle_Paper_Final.pdf)
+Achieves 3.428-3.436* average guesses (optimal is 3.421**).
+*When there are 2 words left it picks randomly, giving variation in the measurement.
+**[Bertsimas & Paskov](https://auction-upload-files.s3.amazonaws.com/Wordle_Paper_Final.pdf)
+
 ## Usage
 
 ### Build
