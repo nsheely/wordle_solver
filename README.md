@@ -124,13 +124,6 @@ src/
 └── wordlists/           # Word list management
 ```
 
-## Technical Details
-
-- **Pattern encoding**: 0-242 base-3 encoding for feedback patterns
-- **Information**: 11.18 bits total (log₂ 2315)
-- **Parallelization**: Uses Rayon for entropy calculations
-- **First guess**: SALET (5.8 bits expected information)
-
 ## License
 
 MIT
