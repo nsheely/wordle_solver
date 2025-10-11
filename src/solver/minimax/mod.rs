@@ -1,6 +1,6 @@
-//! Minimax-based Wordle solver
+//! Minimax guess selection
 //!
-//! Implements worst-case minimization strategy for Wordle solving.
+//! Minimizes worst-case remaining candidates.
 
 mod calculator;
 mod selector;

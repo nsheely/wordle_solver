@@ -1,6 +1,6 @@
-//! Word lists for Wordle solving
+//! Word lists for Wordle
 //!
-//! Provides embedded word lists compiled into the binary for zero-cost access.
+//! Embedded word lists compiled into the binary.
 
 mod embedded;
 pub mod loader;

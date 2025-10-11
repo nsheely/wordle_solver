@@ -1,6 +1,6 @@
-//! Adaptive strategy - state-dependent solver tactics
+//! Adaptive strategy
 //!
-//! Automatically adjusts strategy based on number of remaining candidates.
+//! Adjusts tactics based on number of remaining candidates.
 
 use super::{selection, strategy::Strategy};
 use crate::core::Word;

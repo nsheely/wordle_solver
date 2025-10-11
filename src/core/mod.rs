@@ -1,7 +1,4 @@
-//! Core domain types for Wordle
-//!
-//! This module contains the fundamental domain types with zero external dependencies.
-//! All types here are pure, testable, and have clear mathematical properties.
+//! Core domain types (Word, Pattern)
 
 mod pattern;
 mod word;

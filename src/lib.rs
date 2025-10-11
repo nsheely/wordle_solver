@@ -1,7 +1,5 @@
 //! Wordle Solver
 //!
-//! A Wordle solver using information theory and game theory, achieving 99.7-99.8% optimal performance.
-//!
 //! # Quick Start
 //!
 //! ```rust,no_run

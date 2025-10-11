@@ -1,14 +1,12 @@
-//! Shannon entropy calculation for Wordle patterns
-//!
-//! Given a guess and set of candidates, computes the expected information gain.
+//! Entropy calculation for Wordle patterns
 
 use crate::core::{Pattern, Word};
 use rustc_hash::FxHashMap;
 
-/// Comprehensive metrics for evaluating a guess
+/// Metrics for evaluating a guess
 #[derive(Debug, Clone, Copy)]
 pub struct GuessMetrics {
-    /// Shannon entropy (expected information gain in bits)
+    /// Entropy (expected information gain in bits)
     pub entropy: f64,
     /// Expected number of remaining candidates after this guess
     pub expected_remaining: f64,
@@ -68,11 +66,6 @@ fn group_by_pattern(guess: &Word, candidates: &[&Word]) -> FxHashMap<Pattern, us
 /// Calculate Shannon entropy from pattern distribution
 ///
 /// H = -Σ p * log₂(p)
-///
-/// # Properties
-/// - Returns 0.0 for certain outcome (one pattern with p=1)
-/// - Maximized for uniform distribution
-/// - Always in range [0, log₂(n)] for n patterns
 ///
 /// # Examples
 /// ```

@@ -185,18 +185,23 @@ impl<'a> App<'a> {
 
                     // Create celebration message based on guess count
                     let celebration = match guess_count {
-                        1 => "🎯 HOLE IN ONE! Extraordinary! 🌟",
-                        2 => "🔥 MAGNIFICENT! Two guesses! 🔥",
-                        3 => "✨ SPLENDID! Three guesses! ✨",
-                        4 => "👏 GREAT JOB! Four guesses! 👏",
-                        5 => "🎉 NICE WORK! Five guesses! 🎉",
-                        6 => "😅 PHEW! Got it in six! 😅",
-                        _ => "🎊 SOLVED! 🎊",
+                        1 => "🎯 Hole in one! Extraordinary! 🌟",
+                        2 => "🔥 Magnificent! Two guesses! 🔥",
+                        3 => "✨ Splendid! Three guesses! ✨",
+                        4 => "👏 Great job! Four guesses! 👏",
+                        5 => "🎉 Nice work! Five guesses! 🎉",
+                        6 => "😅 Phew! Got it in six! 😅",
+                        _ => "🎊 Solved! 🎊",
                     };
 
                     self.add_message(celebration, MessageStyle::Success);
-                    self.add_message("Press 'n' for new game or 'q' to quit.", MessageStyle::Info);
+                    self.add_message(
+                        "Press 'n' for new game, 'u' to undo, or 'q' to quit.",
+                        MessageStyle::Info,
+                    );
                 } else if candidates_after == 0 {
+                    // Clear current guess since no valid suggestions exist
+                    self.current_guess = None;
                     self.add_message(
                         "No candidates remain - pattern may be incorrect. Press 'u' to undo.",
                         MessageStyle::Error,
@@ -376,6 +381,11 @@ fn run_app<B: ratatui::backend::Backend>(terminal: &mut Terminal<B>, mut app: Ap
                         KeyCode::Char('n') => {
                             app.new_game();
                         }
+                        KeyCode::Char('u') => {
+                            // Allow undoing even after winning
+                            app.undo_last();
+                            app.input_mode = InputMode::Feedback;
+                        }
                         _ => {
                             // In celebration mode, ignore other keys
                         }
@@ -398,14 +408,9 @@ fn run_app<B: ratatui::backend::Backend>(terminal: &mut Terminal<B>, mut app: Ap
                             // Don't add 'u' to input buffer
                         }
                         KeyCode::Tab => {
-                            // Switch to manual word mode
-                            if app.get_candidates_count() > 0 {
-                                app.input_mode = InputMode::ManualWord;
-                                app.add_message(
-                                    "Enter your own word (5 letters)",
-                                    MessageStyle::Info,
-                                );
-                            }
+                            // Switch to manual word mode (always allow - recovery path)
+                            app.input_mode = InputMode::ManualWord;
+                            app.add_message("Enter your own word (5 letters)", MessageStyle::Info);
                         }
                         KeyCode::Char(c) => {
                             app.input_buffer.push(c);

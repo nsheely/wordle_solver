@@ -1,7 +1,6 @@
-//! Entropy-based Wordle solver
+//! Entropy-based guess selection
 //!
-//! Implements Shannon entropy calculation for Wordle pattern distributions.
-//! This is the foundation of information-theoretic solving.
+//! Calculates entropy for Wordle pattern distributions.
 
 mod calculator;
 mod selector;
