@@ -27,49 +27,49 @@ cargo build --release
 
 ```bash
 # Main help
-./target/release/wordle_solver --help
+wordle_solver --help
 
 # Help for specific commands
-./target/release/wordle_solver play --help
-./target/release/wordle_solver solve --help
+wordle_solver play --help
+wordle_solver solve --help
 ```
 
 ### Commands
 
 **Interactive TUI** - Full-screen interface with visualizations:
 ```bash
-./target/release/wordle_solver play
+wordle_solver play
 ```
 
 **Simple CLI** - Text-based interactive solver:
 ```bash
-./target/release/wordle_solver simple
+wordle_solver simple
 
 # With a specific strategy
-./target/release/wordle_solver simple --strategy minimax
+wordle_solver simple --strategy minimax
 ```
 
 **Solve a specific word** - See how the solver would solve it:
 ```bash
-./target/release/wordle_solver solve CRANE
+wordle_solver solve CRANE
 
 # With verbose output
-./target/release/wordle_solver solve CRANE --verbose
+wordle_solver solve CRANE --verbose
 ```
 
 **Analyze a word** - See its entropy and information value:
 ```bash
-./target/release/wordle_solver analyze SALET
+wordle_solver analyze SALET
 ```
 
 **Benchmark** - Test performance on random sample:
 ```bash
-./target/release/wordle_solver benchmark --count 100
+wordle_solver benchmark --count 100
 ```
 
 **Test all answers** - Full evaluation on all 2,315 words:
 ```bash
-./target/release/wordle_solver test-all
+wordle_solver test-all
 ```
 
 ## Strategies
@@ -83,7 +83,7 @@ Use `--strategy` or `-s` to select:
 
 Example:
 ```bash
-./target/release/wordle_solver simple --strategy minimax
+wordle_solver simple --strategy minimax
 ```
 
 ## Performance
